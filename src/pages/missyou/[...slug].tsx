@@ -4,14 +4,16 @@ import Footer from "@/components/footer";
 import { Inter } from "next/font/google";
 import Head from "next/head";
 import Copy from "@/components/copy";
+import messages from "@/content/missyou.json";
 
 const inter = Inter({ subsets: ["latin"] });
 
 interface Props {
   query: string;
+  message: string;
 }
 
-const QueryPage: NextPage<Props> = ({ query }) => {
+const QueryPage: NextPage<Props> = ({ query, message }) => {
   const router = useRouter();
 
   return (
@@ -19,8 +21,8 @@ const QueryPage: NextPage<Props> = ({ query }) => {
       <Head>
         <title>Miss na kita, {query}.</title>
         <meta charSet="UTF-8" />
-        <meta name="title" content={`Miss na kita, ${query}.`} />
-        <meta name="og:title" content={`Miss na kita, ${query}.`} />
+        <meta name="title" content={`${query}, miss na kita.`} />
+        <meta name="og:title" content={`${query}, miss na kita.`} />
         <meta name="description" content="Here's a short message for someone! Site by @lancerossdev" />
         <meta name="og:description" content="Here's a short message for someone! Site by @lancerossdev" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -29,12 +31,11 @@ const QueryPage: NextPage<Props> = ({ query }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={`bg-zinc-900 text-white flex flex-col items-center min-h-screen justify-center relative ${inter.className}`}>
-        <h1 className="text-3xl sm:text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-blue-400 to-purple-400">
+        <h1 className="text-3xl sm:text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-blue-400 to-green-400">
           Miss na kita, <span className="capitalize">{query}.</span>
         </h1>
         <p className="max-w-md md:max-w-2xl text-lg px-4 pt-10 pb-20 lg:pb-10 text-center">
-          Namimiss na talaga kita. Minu-minuto at oras-oras kang sumasagi sa isip ko araw-araw. Hindi ko masabi kung gaano kita kamahal, pero sana nararamdaman mo ito. Sa bawat minuto na gusto
-          kitang tignan, mas lalo kong nararamdaman kung gaano kita namimiss at kamahal.
+          {message}
         </p>
         <Footer author="Lance Ross" twitter="lancerossdev" />
         <Copy />
@@ -47,9 +48,14 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({ params }) 
   // Combine the slug segments into a single string with slashes between them
   const query = ((params?.slug as string[]) ?? []).join("/");
 
+  // Get a random message from the messages array
+  const randomIndex = Math.floor(Math.random() * messages.messages.length);
+  const message = messages.messages[randomIndex];
+
   return {
     props: {
       query,
+      message,
     },
   };
 };

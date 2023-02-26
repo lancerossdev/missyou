@@ -4,14 +4,16 @@ import Footer from "@/components/footer";
 import { Inter } from "next/font/google";
 import Head from "next/head";
 import Copy from "@/components/copy";
+import messages from "@/content/confess.json";
 
 const inter = Inter({ subsets: ["latin"] });
 
 interface Props {
   query: string;
+  message: string;
 }
 
-const QueryPage: NextPage<Props> = ({ query }) => {
+const QueryPage: NextPage<Props> = ({ query, message }) => {
   const router = useRouter();
 
   return (
@@ -33,8 +35,7 @@ const QueryPage: NextPage<Props> = ({ query }) => {
           Crush kita, <span className="capitalize">{query}.</span>
         </h1>
         <p className="max-w-md md:max-w-2xl text-lg px-4 pt-10 pb-20 lg:pb-10 text-center">
-          Namimiss na talaga kita. Minu-minuto at oras-oras kang sumasagi sa isip ko araw-araw. Hindi ko masabi kung gaano kita kamahal, pero sana nararamdaman mo ito. Sa bawat minuto na gusto
-          kitang tignan, mas lalo kong nararamdaman kung gaano kita namimiss at kamahal.
+          {message}
         </p>
         <Footer author="Lance Ross" twitter="lancerossdev" />
         <Copy />
@@ -47,9 +48,14 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({ params }) 
   // Combine the slug segments into a single string with slashes between them
   const query = ((params?.slug as string[]) ?? []).join("/");
 
+  // Get a random message from the messages array
+  const randomIndex = Math.floor(Math.random() * messages.messages.length);
+  const message = messages.messages[randomIndex];
+
   return {
     props: {
       query,
+      message,
     },
   };
 };
