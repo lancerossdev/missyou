@@ -17,12 +17,12 @@ const QueryPage: NextPage<Props> = ({ query }) => {
   return (
     <>
       <Head>
-        <title>Miss na kita, {query}.</title>
+        <title>{query}, may sasabihin sana ako.</title>
         <meta charSet="UTF-8" />
-        <meta name="title" content={`Miss na kita, ${query}.`} />
-        <meta name="og:title" content={`Miss na kita, ${query}.`} />
-        <meta name="description" content="Here's a short message for someone! Site by @lancerossdev" />
-        <meta name="og:description" content="Here's a short message for someone! Site by @lancerossdev" />
+        <meta name="title" content={`${query}, may sasabihin sana ako.`} />
+        <meta name="og:title" content={`${query}, may sasabihin sana ako.`} />
+        <meta name="description" content="Here's a confession for someone! Site by @lancerossdev" />
+        <meta name="og:description" content="Here's a confession for someone! Site by @lancerossdev" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="color-scheme" content="dark" />
         <script async defer data-website-id="0ead285e-df64-469b-85b5-d2e55c7d6a30" src="https://umami.lanceross.me/umami.js"></script>
@@ -30,7 +30,7 @@ const QueryPage: NextPage<Props> = ({ query }) => {
       </Head>
       <div className={`bg-zinc-900 text-white flex flex-col items-center min-h-screen justify-center relative ${inter.className}`}>
         <h1 className="text-3xl sm:text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-blue-400 to-purple-400">
-          Miss na kita, <span className="capitalize">{query}.</span>
+          Crush kita, <span className="capitalize">{query}.</span>
         </h1>
         <p className="max-w-md md:max-w-2xl text-lg px-4 pt-10 pb-20 lg:pb-10 text-center">
           Namimiss na talaga kita. Minu-minuto at oras-oras kang sumasagi sa isip ko araw-araw. Hindi ko masabi kung gaano kita kamahal, pero sana nararamdaman mo ito. Sa bawat minuto na gusto
