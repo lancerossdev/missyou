@@ -27,7 +27,7 @@ const QueryPage: NextPage<Props> = ({ query, message }) => {
         <meta name="og:description" content="Here's a short message for someone! Site by @lancerossdev" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="color-scheme" content="dark" />
-        <script async defer data-website-id="0ead285e-df64-469b-85b5-d2e55c7d6a30" src="https://umami.lanceross.me/umami.js"></script>
+        <script async defer src="https://analytics.umami.is/script.js" data-website-id="7403ac7c-3c93-47f7-aac6-56ae3aa70ea5"></script>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={`bg-zinc-900 text-white flex flex-col items-center min-h-screen justify-center relative ${inter.className}`}>
